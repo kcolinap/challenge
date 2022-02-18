@@ -1,5 +1,6 @@
 package org.challenge.app.pages.register;
 
+import org.challenge.app.components.SubmitButton;
 import org.challenge.app.components.main.RegisterButton;
 import org.challenge.app.components.register.RegistrationWidget;
 import org.challenge.app.pages.BasePage;
@@ -10,8 +11,9 @@ public class RegisterPage extends BasePage {
 
     private static RegisterPage sSoleInstance;
 
-    //Import the component register button
+    //Import the components of register page
     private static RegistrationWidget registrationWidget;
+    private static SubmitButton submitButton;
 
     /**this method is for implement singleton pattern
      * to avoid multple class instances of Register page
@@ -34,12 +36,9 @@ public class RegisterPage extends BasePage {
 
     private static void setComponents() throws Exception {
         registrationWidget = RegistrationWidget.getInstance();
+        submitButton = SubmitButton.getInstance();
     }
 
-    @Override
-    public String validatePageTitle() {
-        return null;
-    }
 
     public void setEmail(String email){
         Wrapper.setText(registrationWidget.getTxtEmail(),
@@ -61,7 +60,7 @@ public class RegisterPage extends BasePage {
     }
 
     public void submit(){
-        Wrapper.clickOnElement(registrationWidget.getBtnSubmit());
+        Wrapper.clickOnElement(submitButton.getBtnSubmit());
     }
 
 

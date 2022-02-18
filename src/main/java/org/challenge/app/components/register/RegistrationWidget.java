@@ -24,9 +24,6 @@ public class RegistrationWidget extends AbstractComponent {
     @FindBy(xpath = "//*[@data-test='input-captcha']")
     private WebElement txtCaptcha;
 
-    @FindBy(xpath = "//*[@data-test='control-submit']")
-    private WebElement btnSubmit;
-
 
 
     public RegistrationWidget(){
@@ -45,7 +42,7 @@ public class RegistrationWidget extends AbstractComponent {
 
     @Override
     public boolean isDisplayed() {
-        return wait.until(webDriver -> btnSubmit.isDisplayed());
+        return wait.until(webDriver -> txtEmail.isDisplayed());
     }
 
     public WebElement getTxtEmail() {
@@ -68,7 +65,4 @@ public class RegistrationWidget extends AbstractComponent {
         return txtCaptcha;
     }
 
-    public WebElement getBtnSubmit() {
-        return btnSubmit;
-    }
 }

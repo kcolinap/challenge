@@ -1,17 +1,18 @@
 @Challenge
 Feature: Sign
 
-  Add all scenarios to test registration functionality
+  Login workflow -negative scenarios
 
-  #ESte test no puede ser completado porque no es posible
-  #automatizar captchas. Ingresa toda la informacion
-  # solicitada excepto el captcha.
 
   Scenario Outline: Login, negative scenarios - <DESCRIPTION>
-    Given Restart driver "YES"
-    When User clicks on "SIGNIN" button
-    And Set email "RANDOM"
-    And Set password "Test-1111"
-    And Confirm password "Test-1111"
-    And Clicks to accept terms & conditions
-    And Submit the user info
+    Given Restart driver "<RESTART>"
+    And User clicks on "<BUTTON>" button
+    When User set username "<USERNAME>"
+    And User set password "<PASSWORD>"
+    And Submit the user info at page "<PAGE>"
+    Then Validate result "<RESULT>"
+    Examples:
+      | DESCRIPTION                  | RESTART | BUTTON | USERNAME | PASSWORD  | PAGE   | RESULT            |
+      | Login without email          | YES     | SIGNIN |          | Test-1111 | SIGNIN | BLANK_USERNAME    |
+      | Login without password       | NO      |        | UserTest |           | SIGNIN | BLANK_PASSWORD    |
+      | Login with blank credentials | NO      |        |          |           | SIGNIN | BLANK_CREDENTIALS |

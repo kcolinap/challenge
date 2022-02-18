@@ -12,4 +12,4 @@ Feature: Registration
     And Set password "Test-1111"
     And Confirm password "Test-1111"
     And Clicks to accept terms & conditions
-    And Submit the user info
+    And Submit the user info at page "REGISTER"
